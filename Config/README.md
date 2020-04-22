@@ -1,2 +1,2 @@
 # ControlBDA
-Colaboración del control de asistente de reversa para automoviles con remolque
+Archivos de configuración que se usarán en las pruebas de los controladores
