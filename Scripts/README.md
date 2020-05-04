@@ -1,2 +1,3 @@
 # ControlBDA
-Scripts para la colaboración del control de asistente de reversa para automoviles con remolque
+Scripts.
+Control Algorithm for passenger cars with trailer.
