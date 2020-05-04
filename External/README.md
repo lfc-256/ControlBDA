@@ -1,2 +1,3 @@
 ﻿# ControlBDA
-Enlaces y documentos externos que son ocupados en la colaboración del control de asistente de reversa para automoviles con remolque
+External links and documents that are used in the development of control of Back Driving Assistant for passenger Car with Trailers control.
+
