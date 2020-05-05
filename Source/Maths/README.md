@@ -1,2 +1,2 @@
 # ControlBDA
-Modelo matemático del sistema del automóvil con remolque .
+Mathematical Model of the Car System with Trailer
