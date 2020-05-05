@@ -1,2 +1,2 @@
 # ControlBDA
-Colaboración del control de asistente de reversa para automoviles con remolque
+Colaboration about controller desing for Back Driving Assistant for Passenger Cars with Trailer
