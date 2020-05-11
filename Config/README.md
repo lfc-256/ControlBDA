@@ -1,2 +1,2 @@
 # ControlBDA
-Archivos de configuración que se usarán en las pruebas de los controladores
+Configuration files to be used in drivers testing

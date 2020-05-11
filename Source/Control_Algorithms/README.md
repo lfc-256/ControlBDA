@@ -1,2 +1,2 @@
 # ControlBDA
-Algoritmos de control
+Control algorithms
