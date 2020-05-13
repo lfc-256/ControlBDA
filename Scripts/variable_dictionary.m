@@ -1,0 +1,5 @@
+L1=2.984;   %Distancia entre ejes, longitud del carro (metros)
+L12=1.476;  %Longitud entre el eje trasero y el punto de contacto del remolque (metros)
+L2=1.0;     %Longitud del remolque (metros)
+v=5.0;      %Velocidad actual      ()
+Df=1;       %angulo de direccion  (radianes)
