@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.15"
+    ComputedModelVersion    "1.17"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -37,9 +37,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Raul"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri May 22 00:23:47 2020"
-  RTWModifiedTimeStamp	  512007575
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  LastModifiedDate	  "Mon May 25 00:27:42 2020"
+  RTWModifiedTimeStamp	  512267080
+  ModelVersionFormat	  "1.%<AutoIncrement:17>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -143,7 +143,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "30"
 	  AbsTol		  "auto"
-	  FixedStep		  "1e-3"
+	  FixedStep		  "1"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -804,6 +804,21 @@ Model {
       GeneratePreprocessorConditionals off
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
   }
@@ -823,13 +838,186 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "54"
+    SIDHighWatermark	    "81"
+    Block {
+      BlockType		      SubSystem
+      Name		      " Angle change"
+      SID		      "55"
+      Ports		      [0, 1]
+      Position		      [165, 268, 235, 322]
+      FontName		      "Arial Rounded MT Bold"
+      FontSize		      14
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			" Angle change"
+	Location		[485, 288, 880, 480]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "Angle_left"
+	  SID			  "56"
+	  Ports			  [0, 1]
+	  Position		  [115, 104, 145, 136]
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  14
+	  PulseType		  "Time based"
+	  Amplitude		  "Df"
+	  Period		  "30"
+	  PulseWidth		  "10"
+	  PhaseDelay		  "10"
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "Angle_right"
+	  SID			  "57"
+	  Ports			  [0, 1]
+	  Position		  [115, 29, 145, 61]
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  14
+	  PulseType		  "Time based"
+	  Amplitude		  "-Df"
+	  Period		  "30"
+	  PulseWidth		  "10"
+	  PhaseDelay		  "20"
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "Angle_right1"
+	  SID			  "58"
+	  Ports			  [0, 1]
+	  Position		  [25, 79, 55, 111]
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  14
+	  PulseType		  "Time based"
+	  Period		  "30"
+	  PulseWidth		  "50"
+	  PhaseDelay		  "13"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  SID			  "59"
+	  Ports			  [2, 1]
+	  Position		  [320, 131, 325, 169]
+	  ShowName		  off
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  12
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope3"
+	  SID			  "60"
+	  Ports			  [1]
+	  Position		  [340, 134, 370, 166]
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  12
+	  Floating		  off
+	  Location		  [9, 57, 676, 719]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  SaveToWorkspace	  on
+	  SaveName		  "ScopeData3"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  SID			  "61"
+	  Position		  [230, 75, 295, 115]
+	  FontName		  "Arial Rounded MT Bold"
+	  FontSize		  14
+	  Threshold		  "1"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Angle"
+	  SID			  "62"
+	  Position		  [325, 88, 355, 102]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Angle_right1"
+	  SrcPort		  1
+	  Points		  [135, 0]
+	  Branch {
+	    DstBlock		    "Switch"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 65]
+	    DstBlock		    "Mux2"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Labels		  [2, 0]
+	  SrcBlock		  "Angle_right"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, 35]
+	  DstBlock		  "Switch"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Angle_left"
+	  SrcPort		  1
+	  Points		  [60, 0; 0, -10]
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  Branch {
+	    DstBlock		    "Mux2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Angle"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  DstBlock		  "Scope3"
+	  DstPort		  1
+	}
+      }
+    }
     Block {
       BlockType		      SubSystem
       Name		      "Bike Model "
-      SID		      "14"
+      SID		      "63"
       Ports		      [3, 3]
-      Position		      [440, 135, 545, 435]
+      Position		      [400, 145, 505, 445]
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
       MinAlgLoopOccurrences   off
@@ -841,7 +1029,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Bike Model "
-	Location		[1877, 196, 2187, 507]
+	Location		[528, 228, 838, 539]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -857,14 +1045,14 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "L1"
-	  SID			  "15"
+	  SID			  "64"
 	  Position		  [35, 48, 65, 62]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "Steering angle"
-	  SID			  "17"
+	  SID			  "65"
 	  Position		  [25, 108, 55, 122]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -872,7 +1060,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "v"
-	  SID			  "19"
+	  SID			  "66"
 	  Position		  [35, 168, 65, 182]
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -880,28 +1068,28 @@ Model {
 	Block {
 	  BlockType		  Integrator
 	  Name			  "Integrator"
-	  SID			  "3"
+	  SID			  "67"
 	  Ports			  [1, 1]
 	  Position		  [195, 210, 225, 240]
 	}
 	Block {
 	  BlockType		  Integrator
 	  Name			  "Integrator1"
-	  SID			  "7"
+	  SID			  "68"
 	  Ports			  [1, 1]
 	  Position		  [195, 50, 225, 80]
 	}
 	Block {
 	  BlockType		  Integrator
 	  Name			  "Integrator2"
-	  SID			  "9"
+	  SID			  "69"
 	  Ports			  [1, 1]
 	  Position		  [195, 130, 225, 160]
 	}
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "MATLAB Function"
-	  SID			  "5"
+	  SID			  "70"
 	  Ports			  [4, 3]
 	  Position		  [90, 27, 160, 263]
 	  LibraryVersion	  "1.32"
@@ -944,14 +1132,14 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "L1"
-	      SID		      "5::1"
+	      SID		      "70::1"
 	      Position		      [20, 101, 40, 119]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
 	      Name		      "delta"
-	      SID		      "5::18"
+	      SID		      "70::18"
 	      Position		      [20, 136, 40, 154]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -959,7 +1147,7 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "v"
-	      SID		      "5::19"
+	      SID		      "70::19"
 	      Position		      [20, 171, 40, 189]
 	      Port		      "3"
 	      IconDisplay	      "Port number"
@@ -967,7 +1155,7 @@ Model {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "theta"
-	      SID		      "5::20"
+	      SID		      "70::20"
 	      Position		      [20, 206, 40, 224]
 	      Port		      "4"
 	      IconDisplay	      "Port number"
@@ -975,7 +1163,7 @@ Model {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "5::15"
+	      SID		      "70::15"
 	      Ports		      [1, 1]
 	      Position		      [270, 210, 320, 250]
 	      Outputs		      "1"
@@ -983,7 +1171,7 @@ Model {
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "5::14"
+	      SID		      "70::14"
 	      Tag		      "Stateflow S-Function BikeModelTranslationToHitch 2"
 	      Ports		      [4, 4]
 	      Position		      [180, 102, 230, 203]
@@ -1012,20 +1200,20 @@ Model {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "5::17"
+	      SID		      "70::17"
 	      Position		      [460, 221, 480, 239]
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "xfp"
-	      SID		      "5::5"
+	      SID		      "70::5"
 	      Position		      [460, 101, 480, 119]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "yfp"
-	      SID		      "5::21"
+	      SID		      "70::21"
 	      Position		      [460, 136, 480, 154]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -1033,7 +1221,7 @@ Model {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "thetap"
-	      SID		      "5::22"
+	      SID		      "70::22"
 	      Position		      [460, 171, 480, 189]
 	      Port		      "3"
 	      IconDisplay	      "Port number"
@@ -1103,14 +1291,14 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "xf"
-	  SID			  "16"
+	  SID			  "71"
 	  Position		  [250, 58, 280, 72]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "yf"
-	  SID			  "18"
+	  SID			  "72"
 	  Position		  [250, 138, 280, 152]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1118,7 +1306,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "theta"
-	  SID			  "20"
+	  SID			  "73"
 	  Position		  [255, 218, 285, 232]
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -1190,8 +1378,8 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant"
-      SID		      "2"
-      Position		      [250, 170, 280, 200]
+      SID		      "74"
+      Position		      [210, 180, 240, 210]
       ShowName		      off
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1200,8 +1388,8 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant1"
-      SID		      "8"
-      Position		      [250, 370, 280, 400]
+      SID		      "75"
+      Position		      [205, 380, 235, 410]
       ShowName		      off
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1210,8 +1398,8 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant2"
-      SID		      "40"
-      Position		      [820, 350, 850, 380]
+      SID		      "76"
+      Position		      [780, 360, 810, 390]
       ShowName		      off
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1220,9 +1408,9 @@ Model {
     Block {
       BlockType		      Mux
       Name		      "Mux"
-      SID		      "4"
+      SID		      "77"
       Ports		      [3, 1]
-      Position		      [650, 496, 655, 534]
+      Position		      [610, 506, 615, 544]
       ShowName		      off
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1232,9 +1420,9 @@ Model {
     Block {
       BlockType		      Mux
       Name		      "Mux1"
-      SID		      "42"
+      SID		      "78"
       Ports		      [2, 1]
-      Position		      [1055, 271, 1060, 309]
+      Position		      [1015, 281, 1020, 319]
       ShowName		      off
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1242,25 +1430,11 @@ Model {
       DisplayOption	      "bar"
     }
     Block {
-      BlockType		      DiscretePulseGenerator
-      Name		      "Pulse\nGenerator"
-      SID		      "25"
-      Ports		      [0, 1]
-      Position		      [250, 269, 280, 301]
-      FontName		      "Arial Rounded MT Bold"
-      FontSize		      12
-      PulseType		      "Time based"
-      Amplitude		      "Df"
-      Period		      "10"
-      PulseWidth	      "60"
-      PhaseDelay	      "2"
-    }
-    Block {
       BlockType		      Scope
       Name		      "Scope"
-      SID		      "1"
+      SID		      "79"
       Ports		      [1]
-      Position		      [685, 499, 715, 531]
+      Position		      [645, 509, 675, 541]
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
       Floating		      off
@@ -1279,13 +1453,13 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope1"
-      SID		      "43"
+      SID		      "80"
       Ports		      [1]
-      Position		      [1090, 274, 1120, 306]
+      Position		      [1050, 284, 1080, 316]
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
       Floating		      off
-      Location		      [1367, 49, 2807, 859]
+      Location		      [-50, 79, 1390, 889]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1299,33 +1473,11 @@ Model {
       SampleTime	      "0"
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope5"
-      SID		      "26"
-      Ports		      [1]
-      Position		      [355, 314, 385, 346]
-      FontName		      "Arial Rounded MT Bold"
-      FontSize		      12
-      Floating		      off
-      Location		      [238, 271, 714, 616]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      SaveToWorkspace	      on
-      SaveName		      "ScopeData5"
-      DataFormat	      "StructureWithTime"
-      LimitDataPoints	      off
-      SampleTime	      "0"
-    }
-    Block {
       BlockType		      SubSystem
       Name		      "Traslate_FrontReferenceToHitch"
-      SID		      "28"
+      SID		      "81"
       Ports		      [5, 2]
-      Position		      [875, 156, 980, 454]
+      Position		      [835, 166, 940, 464]
       LibraryVersion	      "1.32"
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
@@ -1368,14 +1520,14 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "xf"
-	  SID			  "28::1"
+	  SID			  "81::1"
 	  Position		  [20, 101, 40, 119]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "yf"
-	  SID			  "28::18"
+	  SID			  "81::18"
 	  Position		  [20, 136, 40, 154]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1383,7 +1535,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "theta"
-	  SID			  "28::19"
+	  SID			  "81::19"
 	  Position		  [20, 171, 40, 189]
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -1391,7 +1543,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "d_h"
-	  SID			  "28::20"
+	  SID			  "81::20"
 	  Position		  [20, 206, 40, 224]
 	  Port			  "4"
 	  IconDisplay		  "Port number"
@@ -1399,7 +1551,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "d_fa"
-	  SID			  "28::22"
+	  SID			  "81::22"
 	  Position		  [20, 246, 40, 264]
 	  Port			  "5"
 	  IconDisplay		  "Port number"
@@ -1407,7 +1559,7 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "28::15"
+	  SID			  "81::15"
 	  Ports			  [1, 1]
 	  Position		  [270, 220, 320, 260]
 	  Outputs		  "1"
@@ -1415,7 +1567,7 @@ Model {
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "28::14"
+	  SID			  "81::14"
 	  Tag			  "Stateflow S-Function BikeModelTranslationToHitch 1"
 	  Ports			  [5, 3]
 	  Position		  [180, 100, 230, 220]
@@ -1438,20 +1590,20 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "28::17"
+	  SID			  "81::17"
 	  Position		  [460, 231, 480, 249]
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "xh"
-	  SID			  "28::5"
+	  SID			  "81::5"
 	  Position		  [460, 101, 480, 119]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "yh"
-	  SID			  "28::21"
+	  SID			  "81::21"
 	  Position		  [460, 136, 480, 154]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1613,17 +1765,10 @@ Model {
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Pulse\nGenerator"
+      SrcBlock		      " Angle change"
       SrcPort		      1
-      Points		      [55, 0]
-      Branch {
-	DstBlock		"Bike Model "
-	DstPort			2
-      }
-      Branch {
-	DstBlock		"Scope5"
-	DstPort			1
-      }
+      DstBlock		      "Bike Model "
+      DstPort		      2
     }
     Annotation {
       Name		      "This model translates the front axle to the hitch. A three-turn trajectory is simulated. The rotati"
@@ -1631,6 +1776,13 @@ Model {
       Position		      [657, 45]
       FontName		      "Arial Rounded MT Bold"
       FontSize		      12
+    }
+    Annotation {
+      Name		      "The first input signal to the Bike Model is the angle for  left turn. After 13 s, the input signal "
+      "to the model is the angle signal for a right turn"
+      Position		      [612, 22]
+      FontName		      "Arial Rounded MT Bold"
+      FontSize		      14
     }
   }
 }
@@ -1653,7 +1805,7 @@ Stateflow {
   chart {
     id			    2
     name		    "Traslate_FrontReferenceToHitch"
-    windowPosition	    [300.747 330 200.25 189.75]
+    windowPosition	    [315.747 315 200.25 189.75]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1366 768 1.333333333333333]
     treeNode		    [0 3 0 0]
@@ -1662,6 +1814,8 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    10
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -1879,7 +2033,7 @@ Stateflow {
   chart {
     id			    14
     name		    "Bike Model /MATLAB Function"
-    windowPosition	    [300.747 330 200.25 189.75]
+    windowPosition	    [315.747 315 200.25 189.75]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1366 768 1.333333333333333]
     treeNode		    [0 15 0 0]
@@ -1888,6 +2042,8 @@ Stateflow {
     viewObj		    14
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    10
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
