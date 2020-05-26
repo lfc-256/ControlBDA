@@ -1,7 +1,7 @@
 %{
 This scripts provides a variable dictionary with values of control
 parameters, vehicle parameters and trailer parameters that are used in the
-ssimulation .
+simulation .
 %}
 
 %% Control parameters
