@@ -1,10 +1,14 @@
-%% This scripts provides a variable dictionary with values of control parameters, vehicle parameters and trailer parameters that are used in the simulation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   This scripts provides a variable dictionary with
+%   values of control parameters, vehicle parameters 
+%   and trailer parameters that are used in the simulation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Control parameters
-h = 0.0;  %sampling period
-Kp = 0.0; %Proportional gain
-Ki = 0.0; %integral gain   
-Kd = 0.0; %differential gain  
+h = 0.0;    %sampling period
+Kp = 0.0;   %Proportional gain
+Ki = 0.0;   %integral gain   
+Kd = 0.0;   %differential gain  
 
 % Vehicle parameters
 L1=2.984;   %Length of the car (measured between the two wheel axles)
