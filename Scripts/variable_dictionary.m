@@ -1,7 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   This scripts provides a variable dictionary with
+%   variable_dictionary.m
+%   This script provide a variable dictionary with
 %   values of control parameters, vehicle parameters 
-%   and trailer parameters that are used in the simulation.
+%   and trailer parameters that are loaded and used in the simulation (Simulink).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Control parameters
