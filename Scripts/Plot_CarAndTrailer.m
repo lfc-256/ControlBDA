@@ -7,24 +7,20 @@ x2=ScopeData.signals.values(1:151,5),'DisplayName','ScopeData.signals.values(1:1
 y2=ScopeData.signals.values(1:151,6),'DisplayName','ScopeData.signals.values(1:151,6)','YDataSource','ScopeData.signals.values(1:151,6)'
 phi=ScopeData.signals.values(1:151,7),'DisplayName','ScopeData.signals.values(1:151,7)','YDataSource','ScopeData.signals.values(1:151,7)'
 gamma=ScopeData.signals.values(1:151,8),'DisplayName','ScopeData.signals.values(1:151,8)','YDataSource','ScopeData.signals.values(1:151,8)'
+jkk=ScopeData_jkk.signals.values(1:151,1),'DisplayName','ScopeData.signals.values(1:151,2)','YDataSource','ScopeData.signals.values(1:151,1)'
 
 figure('Name','Car and Trailer model','NumberTitle','off');
 
-subplot(2,2,1);
-plot(phi,'r','linewidth',2);
+subplot(2,2,[1,2]);
+p1=plot(gamma,'r','linewidth',2);
 grid on
 hold on
+plot(-jkk,'b','linewidth',2);
+p2=plot(jkk,'b','linewidth',2);
 title('Rear axel angle')
 ylabel('rad')
 xlabel('ms')
-
-subplot(2,2,2);
-plot(gamma,'linewidth',2);
-grid on
-hold on
-title('Hitch angle')
-ylabel('rad')
-xlabel('ms')
+legend([p1 p2],{'Hitch angle','Jackknife angle'})
 
 subplot(2,2,[3,4]);
 grid on
@@ -37,6 +33,11 @@ for i=1:151
     plot(x2(i),y2(i),'y>','linewidth',2)
     pause(0.2)  
     cla
+    if i<151
+        if x1(i+1) == x1(i)
+            break
+        end
+    end
 end
 for i=1:151
     plot([x1(i) xh(i)],[y1(i) yh(i)],'k','linewidth',2)   
