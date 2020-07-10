@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Plota_carAndTrailer.m
-%   This script plot steering angle, jackknife angle
-%   and car and trailer displacement.
+% Plota_carAndTrailer_Control.m
+%   This script steering angle, control signal, jackknife angle and 
+%   car and trailer displacement.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 close all;
@@ -15,16 +15,18 @@ phi=ScopeData.signals.values(1:151,7);'DisplayName';'ScopeData.signals.values(1:
 gamma=ScopeData.signals.values(1:151,8);'DisplayName';'ScopeData.signals.values(1:151,8);''YDataSource';'ScopeData.signals.values(1:151,8)';
 jkk=ScopeData_jkk.signals.values(1:151,1);'DisplayName';'ScopeData.signals.values(1:151,1);''YDataSource';'ScopeData.signals.values(1:151,1)';
 steering=ScopeData_SteeringAngle.signals.values(1:151,1);'DisplayName';'ScopeData.signals.values(1:151,1)';'YDataSource';'ScopeData.signals.values(1:151,1)';
+signal_control=ScopeData_SteeringAngle.signals.values(1:151,2);'DisplayName';'ScopeData.signals.values(1:151,2)';'YDataSource';'ScopeData.signals.values(1:151,2)';
 
 figure('Name','Car and Trailer model','NumberTitle','off');
 subplot(3,2,1);
 p1=plot(steering,'r','linewidth',2);
 grid on;
 hold on;
-title('Maneuver: Steering angle');
+p2=plot(signal_control,'b--','linewidth',2);
+title('Steering angle and ');
 ylabel('rad');
 xlabel('ms');
-legend(p1,'Steering Angle');
+legend([p1,p2],{'Steering Angle','Signal control'});
 
 subplot(3,2,2);
 p1=plot(gamma,'r','linewidth',2);
