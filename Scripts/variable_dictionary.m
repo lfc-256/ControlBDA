@@ -29,12 +29,16 @@ k=-2.002;
 c11=v/L1; 
 c22=v/L2; 
 c33=v*L12/(L1*L2);
-%% PID controller
-kp=-3.184; 
-ki=-2.363;
+%% PI controller
+kp=-6.728; 
+ki=-14.769;
 %% Free Model controller
-alfa1=1.0;
-BW=50.0;  
+alfa1=1; 
+kpf=-30;
+kif=-30;
+kdf=-7;
+BWbaja=20;
+Ts=0.001;
 %% JKK angle
 jkk=(90-atan((w/2)/g))*pi/180;  %Equation to calculate JKK angle
 tolerance=0.85;                  
