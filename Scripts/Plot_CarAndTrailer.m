@@ -28,8 +28,8 @@ legend(p1,'Steering Angle');
 
 subplot(3,2,2);
 p1=plot(gamma,'r','linewidth',2);
-grid on;
-hold on;
+grid on
+hold on
 p2=plot(jkk,'b','linewidth',2);
 plot(-jkk,'b','linewidth',2);
 p3=plot(tolerance*jkk,'g--','linewidth',1);

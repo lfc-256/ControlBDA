@@ -12,17 +12,17 @@ steering=ScopeData_SteeringAngle.signals.values(:,1);'DisplayName';'ScopeData.si
 signal_control=ScopeData_SteeringAngle.signals.values(:,2);'DisplayName';'ScopeData.signals.values(1:151,2)';'YDataSource';'ScopeData.signals.values(1:151,2)';
 
 figure('Name','Car and Trailer model','NumberTitle','off');
-subplot(3,2,1);
+subplot(1,2,1);
 p1=plot(steering,'r','linewidth',2);
 grid on;
 hold on;
-p2=plot(signal_control,'b--','linewidth',2);
+p2=plot(signal_control,'b','linewidth',1);
 title('Steering angle');
 ylabel('rad');
 xlabel('ms');
 legend([p1,p2],{'Steering Angle','Signal control'});
 
-subplot(3,2,2);
+subplot(1,2,2);
 p1=plot(gamma,'r','linewidth',2);
 grid on;
 hold on;
@@ -35,41 +35,44 @@ ylabel('rad');
 xlabel('ms');
 legend([p1 p2 p3],{'Hitch angle','Jackknife angle','Jackknife angle with tolerance'});
 
-subplot(3,2,[3,4]);
-grid on;
-hold on;
-N=size(x1);
-for i=1:100:N(1)
-    plot([x1(i) xh(i)],[y1(i) yh(i)],'k','linewidth',2);   
-    plot([xh(i) x2(i)],[yh(i) y2(i)],'m','linewidth',2) ;
-    plot(x1(i),y1(i),'r>','linewidth',2);
-    plot(xh(i),yh(i),'bs','linewidth',2);
-    plot(x2(i),y2(i),'y>','linewidth',2);
-    pause(0.1)  
-    cla;
-    if i<N(1)
-        if x1(i+1) == x1(i)
-            break
-        end
-    end
-end
-for i=1:100:N(1)
-    plot([x1(i) xh(i)],[y1(i) yh(i)],'k','linewidth',2);
-    plot([xh(i) x2(i)],[yh(i) y2(i)],'m','linewidth',2);
-end
-title('Vehicle displacement.');
-xlabel('m');
-ylabel('m');
-p3=plot(x1,y1,'r>','linewidth',2);
-p4=plot(xh,yh,'bs','linewidth',2);
-p5=plot(x2,y2,'y>','linewidth',2);
-p2=plot([x1(N(1)) xh(N(1))],[y1(N(1)) yh(N(1))],'c','linewidth',5);
-plot([xh(N(1)) x2(N(1))],[yh(N(1)) y2(N(1))],'c','linewidth',5);
-p1=plot([x1(1) xh(1)],[y1(1) yh(1)],'g','linewidth',5);
-plot([xh(1) x2(1)],[yh(1) y2(1)],'g','linewidth',5);
-legend([p1 p2 p3 p4 p5],{'Start','Final','Front axle','Hitch','Trailer axle'});
+% hold off;
+% figure(2);
+% % subplot(3,2,[3,4]);
+% grid on;
+% hold on;
+% N=size(x1);
+% for i=1:100:N(1)
+%     plot([x1(i) xh(i)],[y1(i) yh(i)],'k','linewidth',2);   
+%     plot([xh(i) x2(i)],[yh(i) y2(i)],'m','linewidth',2) ;
+%     plot(x1(i),y1(i),'r>','linewidth',2);
+%     plot(xh(i),yh(i),'bs','linewidth',2);
+%     plot(x2(i),y2(i),'y>','linewidth',2);
+%     pause(0.1)  
+%     cla;
+%     if i<N(1)
+%         if x1(i+1) == x1(i)
+%             break
+%         end
+%     end
+% end
+% for i=1:100:N(1)
+%     plot([x1(i) xh(i)],[y1(i) yh(i)],'k','linewidth',2);
+%     plot([xh(i) x2(i)],[yh(i) y2(i)],'m','linewidth',2);
+% end
+% title('Vehicle displacement.');
+% xlabel('m');
+% ylabel('m');
+% p3=plot(x1,y1,'r>','linewidth',2);
+% p4=plot(xh,yh,'bs','linewidth',2);
+% p5=plot(x2,y2,'y>','linewidth',2);
+% p2=plot([x1(N(1)) xh(N(1))],[y1(N(1)) yh(N(1))],'c','linewidth',5);
+% plot([xh(N(1)) x2(N(1))],[yh(N(1)) y2(N(1))],'c','linewidth',5);
+% p1=plot([x1(1) xh(1)],[y1(1) yh(1)],'g','linewidth',5);
+% plot([xh(1) x2(1)],[yh(1) y2(1)],'g','linewidth',5);
+% legend([p1 p2 p3 p4 p5],{'Start','Final','Front axle','Hitch','Trailer axle'});
 
-subplot(3,2,[5,6]);
+figure(3);
+%subplot(3,2,[5,6]);
 PHI2=phi-gamma;                                  %Define angle reference to trailer
 car_color='r';                                   %Car color                               
 car=CreaCuadro3(length_c,width_c,car_color,4);   %Create car
